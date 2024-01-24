@@ -10,9 +10,9 @@ import java.util.Map;
 @Service
 public class AchievementServiceImpl implements AchievementService {
 
-    private static Map<String, AchievementModel> achievementRepo = new HashMap<String, AchievementModel>();
+    private static Map<Long, AchievementModel> achievementRepo = new HashMap<Long, AchievementModel>();
     static {
-        AchievementModel commit = new AchievementModel("1", "Mi primer commit");
+        AchievementModel commit = new AchievementModel(1L, "Mi primer commit");
         achievementRepo.put(commit.getId(), commit);
     }
     @Override
@@ -32,15 +32,15 @@ public class AchievementServiceImpl implements AchievementService {
 
     //Update
     @Override
-    public void updateAchievement(String id, AchievementModel achievement) {
+    public void updateAchievement(Long id, AchievementModel achievement) {
         achievementRepo.remove(id);
         achievement.setId(id);
         achievementRepo.put(id, achievement);
     }
 
-    //Get
+    //Get all
     @Override
-    public Collection<AchievementModel> getachievement() {
+    public Collection<AchievementModel> getAchievement() {
         return achievementRepo.values();
     }
 }

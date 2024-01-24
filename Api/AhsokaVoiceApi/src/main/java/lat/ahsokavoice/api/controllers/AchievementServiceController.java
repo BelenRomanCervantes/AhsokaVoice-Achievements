@@ -12,7 +12,7 @@ import java.util.Collection;
 
 
 @RestController
-//asigna una url llave para todo lo referente a achievements
+//asigna una url llave
 @RequestMapping("/achievements")
 public class AchievementServiceController {
 
@@ -22,7 +22,8 @@ public class AchievementServiceController {
 
     @GetMapping("/")
     public Collection<AchievementModel> index() {
-        return achievementService.getachievement();
+
+        return achievementService.getAchievement();
     }
 
     //Solicita un valor `title` y devuelve `Hello title`

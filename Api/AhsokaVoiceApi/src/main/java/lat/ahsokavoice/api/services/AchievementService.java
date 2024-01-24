@@ -11,8 +11,8 @@ public interface AchievementService {
 
     void createAchievement(AchievementModel achievement);
 
-    void updateAchievement(String id, AchievementModel achievement);
+    void updateAchievement(Long id, AchievementModel achievement);
 
     //Get
-    Collection<AchievementModel> getachievement();
+     Collection<AchievementModel> getAchievement();
 }
