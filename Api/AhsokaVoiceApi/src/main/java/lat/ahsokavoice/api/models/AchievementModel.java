@@ -2,7 +2,8 @@ package lat.ahsokavoice.api.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name= "achievements")
@@ -11,26 +12,25 @@ public class AchievementModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String title;
-    private LocalDateTime date;
+    private ZonedDateTime date;
     private String tag;
     private String description;
     private String image;
 
 
-    public AchievementModel() {
-
-    }
-    public AchievementModel(Long id, String title) {
+    public AchievementModel(Long id, String title, ZonedDateTime date, String tag, String description, String image) {
         this.id = id;
         this.title = title;
-    }
-
-    public AchievementModel(LocalDateTime date, String tag, String description, String image) {
         this.date = date;
         this.tag = tag;
         this.description = description;
         this.image = image;
+    }
+
+    public AchievementModel() {
+
     }
 
     public Long getId() {
@@ -49,11 +49,11 @@ public class AchievementModel {
         this.title = title;
     }
 
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(ZonedDateTime date) {
         this.date = date;
     }
 
