@@ -1,29 +1,31 @@
 package lat.ahsokavoice.api.services;
 
 import lat.ahsokavoice.api.models.AchievementModel;
+import lat.ahsokavoice.api.request.AchievementRequest;
+import lat.ahsokavoice.api.response.AchievementResponse;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public interface AchievementService {
 
     //Create achievement
-    public AchievementModel createAchievement(AchievementModel achievement);
-
-    public Optional<AchievementModel> saveAchievementImage(Long id, AchievementModel achievement);
+    public AchievementModel create(AchievementModel newAchievement);
 
     //Get all achievements
-    public List<AchievementModel> getAllAchievements();
+    public List<AchievementModel> getAll();
 
-    //Update an achievement by id
-    public Optional<AchievementModel> updateAchiemeventById(Long id, AchievementModel achievement);
+    //Get an achievement by id
+    public AchievementModel getById(Long id);
 
-    //Update an achievement by id
-    public Optional<AchievementModel> updateAchievementById(Long id, AchievementModel achievementReceived);
+    //Patch an achievement by id
+    public AchievementModel patchById(Long id, AchievementModel newData);
+
+    //Put an achievement by id
+    public AchievementModel putById(Long id, AchievementModel newData);
 
     //Delete an achievement by id
-    public Boolean deleteAchievementById(Long id);
+    public Boolean deleteById(Long id);
 
 
 
