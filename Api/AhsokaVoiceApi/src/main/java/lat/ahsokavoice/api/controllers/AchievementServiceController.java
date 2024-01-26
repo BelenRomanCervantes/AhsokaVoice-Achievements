@@ -5,12 +5,12 @@ import lat.ahsokavoice.api.services.AchievementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
 
 @RestController
-//Asigna una url llave
 @RequestMapping("/achievements")
 public class AchievementServiceController {
 
@@ -20,28 +20,37 @@ public class AchievementServiceController {
 
 
     //Create achievement
-    @PostMapping("/")
+    @PostMapping("/create")
     public AchievementModel createAchievementController(@RequestBody AchievementModel achievement) {
         return achievementService.createAchievement(achievement);
     }
 
+    //Save an URL image to an achievement
+    @PostMapping("/create/image/{id}")
+    public Optional<AchievementModel> saveAchievementImageController(@PathVariable Long id, @RequestBody AchievementModel request) {
+        return achievementService.saveAchievementImage(id, request);
+    }
+
     //Get all achievements
-    @GetMapping("/")
+    @GetMapping("/getall")
     public List<AchievementModel> getAllAchievementsController() {
         return achievementService.getAllAchievements();
     }
 
     //Update an achievement by id
-    @PatchMapping("/{id}")
+    @PatchMapping("/update/{id}")
     public Optional<AchievementModel> updateAchiemeventById(@PathVariable Long id, @RequestBody AchievementModel request){
         return achievementService.updateAchiemeventById(id, request);
     }
 
-        //Get achievement by id
-/*    @GetMapping("/")
-    public AchievementModel index() {
-        return (AchievementModel) achievementService.getAchievementById();
-    }*/
-
+    //Delete an achievement by id
+    @DeleteMapping("/delete/{id}")
+    public String deleteAchievementController(@PathVariable Long id) {
+        if (achievementService.deleteAchievementById(id)) {
+            return "Achievement deleted successfully";
+        } else {
+            return "Error";
+        }
+    }
 
     }

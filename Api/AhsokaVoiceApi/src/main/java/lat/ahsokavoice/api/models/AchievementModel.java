@@ -13,24 +13,33 @@ public class AchievementModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
+    private Long id_user;
     private String title;
     private ZonedDateTime date;
-    private String tag;
+    private Long id_tag;
     private String description;
     private String image;
 
-
-    public AchievementModel(Long id, String title, ZonedDateTime date, String tag, String description, String image) {
-        this.id = id;
-        this.title = title;
-        this.date = date;
-        this.tag = tag;
-        this.description = description;
-        this.image = image;
-    }
-
     public AchievementModel() {
 
+    }
+    public AchievementModel(Long id, Long id_user, String title) {
+        this.id = id;
+        this.id_user = id_user;
+        this.title = title;
+    }
+
+    public AchievementModel(ZonedDateTime date, Long id_tag, String description, String image) {
+        this.date = date;
+        this.id_tag = id_tag;
+        this.description = description;
+    }
+
+    public AchievementModel(Long id, String title, String image) {
+        this.id = id;
+        this.title = title;
+        this.image = image;
     }
 
     public Long getId() {
@@ -39,6 +48,14 @@ public class AchievementModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
     }
 
     public String getTitle() {
@@ -57,12 +74,12 @@ public class AchievementModel {
         this.date = date;
     }
 
-    public String getTag() {
-        return tag;
+    public Long getId_tag() {
+        return id_tag;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setId_tag(Long id_tag) {
+        this.id_tag = id_tag;
     }
 
     public String getDescription() {

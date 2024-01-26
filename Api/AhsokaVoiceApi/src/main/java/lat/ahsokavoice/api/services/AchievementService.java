@@ -9,18 +9,23 @@ import java.util.Optional;
 public interface AchievementService {
 
     //Create achievement
-    AchievementModel createAchievement(AchievementModel achievement);
+    public AchievementModel createAchievement(AchievementModel achievement);
+
+    public Optional<AchievementModel> saveAchievementImage(Long id, AchievementModel achievement);
 
     //Get all achievements
-    List<AchievementModel> getAllAchievements();
+    public List<AchievementModel> getAllAchievements();
 
     //Update an achievement by id
-    Optional<AchievementModel> updateAchiemeventById(Long id, AchievementModel request);
+    public Optional<AchievementModel> updateAchiemeventById(Long id, AchievementModel achievement);
 
     //Update an achievement by id
-    Optional<AchievementModel> updateAchievementById(Long id, AchievementModel achievementReceived);
+    public Optional<AchievementModel> updateAchievementById(Long id, AchievementModel achievementReceived);
 
-    void updateAchievement(Long id, AchievementModel achievement);
+    //Delete an achievement by id
+    public Boolean deleteAchievementById(Long id);
+
+
 
 
 }
