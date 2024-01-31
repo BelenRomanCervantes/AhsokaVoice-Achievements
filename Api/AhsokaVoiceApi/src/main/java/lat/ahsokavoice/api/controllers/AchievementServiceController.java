@@ -7,9 +7,7 @@ import lat.ahsokavoice.api.services.AchievementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -23,30 +21,30 @@ public class AchievementServiceController {
 
     //Create achievement
     @PostMapping("/create")
-    public AchievementModel createController(@RequestBody AchievementModel newAchievement) {
+    public AchievementResponse createController(@RequestBody AchievementRequest newAchievement) {
         return achievementService.create(newAchievement);
     }
 
     //Get all achievements
     @GetMapping("/getall")
-    public List<AchievementModel> getAllController() {
+    public List<AchievementResponse> getAllController() {
         return achievementService.getAll();
     }
 
     //Get an achievement by id
     @GetMapping("/getbyid/{id}")
-    public AchievementModel getByIdController(@PathVariable Long id) {
+    public AchievementResponse getByIdController(@PathVariable Long id) {
         return achievementService.getById(id);
     }
 
     //Update an achievement by id
     @PatchMapping("/patch/{id}")
-    public AchievementModel patchController(@PathVariable Long id, @RequestBody AchievementModel newData){
+    public AchievementResponse patchController(@PathVariable Long id, @RequestBody AchievementModel newData){
         return achievementService.patchById(id, newData);
     }
 
     @PutMapping("/put/{id}")
-    public AchievementModel putController(@PathVariable Long id, @RequestBody AchievementModel newData){
+    public AchievementResponse putController(@PathVariable Long id, @RequestBody AchievementModel newData){
         return achievementService.putById(id, newData);
     }
 

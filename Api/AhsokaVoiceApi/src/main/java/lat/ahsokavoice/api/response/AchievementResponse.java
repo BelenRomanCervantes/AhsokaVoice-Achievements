@@ -4,14 +4,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 public class AchievementResponse {
 
 
     private Long id_user;
     private String title;
-    private ZonedDateTime date;
+    private Instant date;
     private Long id_tag;
     private String description;
     private String image;
@@ -19,7 +19,7 @@ public class AchievementResponse {
     public AchievementResponse() {
 
     }
-    public AchievementResponse(Long id_user, String title, ZonedDateTime date, Long id_tag, String description, String image) {
+    public AchievementResponse(Long id_user, String title, Instant date, Long id_tag, String description, String image) {
         this.id_user = id_user;
         this.title = title;
         this.date = date;
@@ -43,11 +43,11 @@ public class AchievementResponse {
         this.title = title;
     }
 
-    public ZonedDateTime getDate() {
+    public Instant getDate() {
         return date;
     }
 
-    public void setDate(ZonedDateTime date) {
+    public void setDate(Instant date) {
         this.date = date;
     }
 

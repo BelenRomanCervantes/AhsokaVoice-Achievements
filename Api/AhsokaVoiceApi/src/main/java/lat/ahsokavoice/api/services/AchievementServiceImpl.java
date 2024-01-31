@@ -7,7 +7,7 @@ import lat.ahsokavoice.api.response.AchievementResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 import java.util.*;
 
 
@@ -21,10 +21,8 @@ public class AchievementServiceImpl implements AchievementService {
     @Override
     public AchievementResponse create(AchievementRequest newAchievement) {
         AchievementModel request = new AchievementModel();
-        request.setId(null);
-        request.setId_user(null);
         request.setTitle(newAchievement.getTitle());
-        request.setDate(ZonedDateTime.now());
+        request.setDate(Instant.now());
         request.setId_tag(newAchievement.getId_tag());
         request.setDescription(newAchievement.getDescription());
         request.setImage(newAchievement.getImage());
@@ -38,6 +36,7 @@ public class AchievementServiceImpl implements AchievementService {
         response.setImage(post.getImage());
         return response;
     }
+
 
     //Get all achievements
     @Override
@@ -73,16 +72,44 @@ public class AchievementServiceImpl implements AchievementService {
 
     //Patch an achievement by id
     @Override
-    public AchievementModel patchById(Long id, AchievementModel newData) {
-        repository.replace(id, newData);
-        return newData;
+    public AchievementResponse patchById(Long id, AchievementModel newData) {
+        AchievementModel request = new AchievementModel();
+        request.setTitle(newData.getTitle());
+        request.setDate(Instant.now());
+        request.setId_tag(newData.getId_tag());
+        request.setDescription(newData.getDescription());
+        request.setImage(newData.getImage());
+        request.setId(id);
+        AchievementModel updatedAchievement = repository.save(request);
+        AchievementResponse response = new AchievementResponse();
+        response.setId_user(updatedAchievement.getId_user());
+        response.setTitle(updatedAchievement.getTitle());
+        response.setDate(updatedAchievement.getDate());
+        response.setId_tag(updatedAchievement.getId_tag());
+        response.setDescription(updatedAchievement.getDescription());
+        response.setImage(updatedAchievement.getImage());
+        return response;
     }
 
     //Put an achievement by id
     @Override
-    public AchievementModel putById(Long id, AchievementModel newData) {
-        repository.replace(id, newData);
-        return newData;
+    public AchievementResponse putById(Long id, AchievementModel newData) {
+        AchievementModel request = new AchievementModel();
+        request.setTitle(newData.getTitle());
+        request.setDate(Instant.now());
+        request.setId_tag(newData.getId_tag());
+        request.setDescription(newData.getDescription());
+        request.setImage(newData.getImage());
+        request.setId(id);
+        AchievementModel updatedAchievement = repository.save(request);
+        AchievementResponse response = new AchievementResponse();
+        response.setId_user(updatedAchievement.getId_user());
+        response.setTitle(updatedAchievement.getTitle());
+        response.setDate(updatedAchievement.getDate());
+        response.setId_tag(updatedAchievement.getId_tag());
+        response.setDescription(updatedAchievement.getDescription());
+        response.setImage(updatedAchievement.getImage());
+        return response;
     }
 
     @Override

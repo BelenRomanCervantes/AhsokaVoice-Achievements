@@ -9,20 +9,20 @@ import java.util.List;
 
 public interface AchievementService {
 
-    //Create achievement
-    public AchievementModel create(AchievementModel newAchievement);
+    //Create an achievement
+    AchievementResponse create(AchievementRequest newAchievement);
 
     //Get all achievements
-    public List<AchievementModel> getAll();
+    public List<AchievementResponse> getAll();
 
     //Get an achievement by id
-    public AchievementModel getById(Long id);
+    public AchievementResponse getById(Long id);
 
     //Patch an achievement by id
-    public AchievementModel patchById(Long id, AchievementModel newData);
+    public AchievementResponse patchById(Long id, AchievementModel newData);
 
     //Put an achievement by id
-    public AchievementModel putById(Long id, AchievementModel newData);
+    public AchievementResponse putById(Long id, AchievementModel newData);
 
     //Delete an achievement by id
     public Boolean deleteById(Long id);
